@@ -1,0 +1,162 @@
+# GatorGrade configuration for Final Project
+# This checks baseline requirements for the final project submission
+
+# Check that README.md exists and has comprehensive documentation
+- ./writing/README.md:
+    - description: ./writing/README.md Ensure file exists
+      check: ConfirmFileExists
+    - description: ./writing/README.md contains no TODO markers should remain (all sections completed)
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+    - description: ./writing/README.md Student(s) added their name 
+      check: MatchFileFragment
+      options:
+        fragment: "Add Your Name Here"
+        count: 0
+        exact: true
+    # - description: README has substantial documentation (at least 400 words)
+    #   check: CountFileWords
+    #   options:
+    #     count: 400
+    #     exact: false
+
+# Check that reflection.md exists and is complete
+- writing/reflection.md:
+    - description: ./writing/reflection.md Ensure file exists
+      check: ConfirmFileExists
+    - description: ./writing/reflection.md Student added their name to reflection
+      check: MatchFileFragment
+      options:
+        fragment: "Add Your Name Here"
+        count: 0
+        exact: true
+    - description: ./writing/reflection.md contains no TODO markers should remain (all sections completed)
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: true
+    # - description: Reflection discusses Lists usage
+    #   check: MatchFileFragment
+    #   options:
+    #     fragment: "Lists"
+    #     count: 1
+    #     exact: false
+    # - description: Reflection discusses Dictionaries usage
+    #   check: MatchFileFragment
+    #   options:
+    #     fragment: "Dictionaries"
+    #     count: 1
+    #     exact: false
+    # - description: Reflection discusses Functions usage
+    #   check: MatchFileFragment
+    #   options:
+    #     fragment: "Functions"
+    #     count: 1
+    #     exact: false
+    # - description: Reflection discusses File I/O usage
+    #   check: MatchFileFragment
+    #   options:
+    #     fragment: "File I/O"
+    #     count: 1
+    #     exact: false
+    # - description: Reflection discusses Exception Handling
+    #   check: MatchFileFragment
+    #   options:
+    #     fragment: "Exception Handling"
+    #     count: 1
+    #     exact: false
+    # - description: Reflection has substantial content (at least 800 words)
+    #   check: CountFileWords
+    #   options:
+    #     count: 800
+    #     exact: false
+
+# Check that testing.md exists and is complete
+- writing/testing.md:
+    - description: ./writing/testing.md Ensure file exists
+      check: ConfirmFileExists
+    - description: ./writing/testing.md Student added their name
+      check: MatchFileFragment
+      options:
+        fragment: "Add Your Name Here"
+        count: 0
+        exact: false
+    - description: ./writing/testing.md No TODO markers should remain (all sections completed)
+      check: MatchFileFragment
+      options:
+        fragment: "TODO"
+        count: 0
+        exact: false
+    # - description: Testing document has substantial content (at least 600 words)
+    #   check: CountFileWords
+    #   options:
+    #     count: 600
+    #     exact: false
+
+# Check that source code exists
+- src/:
+    - description: ./src/ ensure directory exists for source code
+      check: ConfirmFileExists
+
+# Check for at least one Python file in src/
+- src/main.py:
+    - description: ./src/main.py ensure file exists
+      check: ConfirmFileExists
+    - description:  ./src/main.py Code includes function definitions
+      check: MatchFileFragment
+      options:
+        fragment: "def "
+        count: 3
+        exact: false
+    - description: ./src/main.py Code includes exception handling (try-except)
+      check: MatchFileFragment
+      options:
+        fragment: "try:"
+        count: 2
+        exact: false
+    - description: ./src/main.py Code uses lists (list literal or list creation)
+      check: MatchFileFragment
+      options:
+        fragment: "["
+        count: 2
+        exact: false
+    - description: ./src/main.py Code uses dictionaries (dictionary literal or dict creation)
+      check: MatchFileFragment
+      options:
+        fragment: "{"
+        count: 1
+        exact: false
+    - description: ./src/main.py Code includes while loops for conditional iteration
+      check: MatchFileFragment
+      options:
+        fragment: "while "
+        count: 1
+        exact: false
+    - description: ./src/main.py Code includes for loops with range
+      check: MatchFileFragment
+      options:
+        fragment: "range("
+        count: 1
+        exact: false
+    - description: ./src/main.py Code includes file I/O operations (open function)
+      check: MatchFileFragment
+      options:
+        fragment: "open("
+        count: 1
+        exact: false
+    - description: ./src/main.py Code has comments for documentation
+      check: MatchFileFragment
+      options:
+        fragment: "#"
+        count: 10
+        exact: false
+
+# Check for regular commits throughout development (not all at the end)
+- description: At least 5 commits to show iterative development
+  check: CountCommits
+  options:
+    count: 5
