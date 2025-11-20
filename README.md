@@ -158,6 +158,7 @@ Your project will be evaluated based on:
 
 ### Functionality (30%) (presented application, src/ directory)
 
+- Able to verbally explain how to the code works
 - Application works as intended
 - Implements core features successfully
 - Handles user input appropriately
